@@ -2,84 +2,68 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone-with-data-1970-2030.min.js"></script>
     <title>The World Dial</title>
   </head>
   <body>
     <div class="container">
+      <div class="clock">
+        <div class="hand hour" data-hour-hand></div>
+        <div class="hand minute" data-minute-hand></div>
+        <div class="hand second" data-second-hand></div>
+        <div class="number number1">1</div>
+        <div class="number number2">2</div>
+        <div class="number number3">3</div>
+        <div class="number number4">4</div>
+        <div class="number number5">5</div>
+        <div class="number number6">6</div>
+        <div class="number number7">7</div>
+        <div class="number number8">8</div>
+        <div class="number number9">9</div>
+        <div class="number number10">10</div>
+        <div class="number number11">11</div>
+        <div class="number number12">12</div>
+      </div>
       <h1>The World Dial</h1>
 
-      <select id="city-dial">
-        <option value="">Select a city...</option>
-        <option value="America/Los_Angeles">Los Angeles 🇺🇸</option>
-        <option value="Australia/Sydney">Sydney 🇦🇺</option>
-        <option value="Europe/London">London 🇬🇧</option>
-        <option value="America/New_York">New York 🇺🇸</option>
-        <option value="Pacific/Auckland">Auckland 🇳🇿</option>
-        <option value="Asia/Tokyo">Tokyo 🇯🇵</option>
-        <option value="Europe/Berlin">Berlin 🇩🇪</option>
-        <option value="America/Chicago">Chicago 🇺🇸</option>
-        <option value="Asia/Singapore">Singapore 🇸🇬</option>
+      <select id="city">
+        <option value="">Select a city..</option>
+        <option value="current">My location</option>
+        <option value="Europe/London">London</option>
+        <option value="Europe/Berlin">Berlin</option>
+        <option value="Europe/Bucharest">Bucharest</option>
+        <option value="America/New_York">New York</option>
+        <option value="Pacific/Auckland">Auckland</option>
+        <option value="Caribbean/Jamaica">Jamaica</option>
       </select>
 
-      <div id="local-time" style="display: none"></div>
-
-      <div id="cities-dial">
+      <div id="cities">
         <div class="city" id="los-angeles">
-          <h2>Los Angeles 🇺🇸</h2>
-          <div class="date"></div>
+          <div>
+            <h2>Los Angeles</h2>
+            <div class="date"></div>
+          </div>
           <div class="time"></div>
         </div>
-        <div class="city" id="sydney" style="display: none">
-          <h2>Sydney 🇦🇺</h2>
-          <div class="date"></div>
+        <div class="city" id="paris">
+          <div>
+            <h2>Paris</h2>
+            <div class="date"></div>
+          </div>
           <div class="time"></div>
         </div>
-        <div class="city" id="london" style="display: none">
-          <h2>London 🇬🇧</h2>
-          <div class="date"></div>
-          <div class="time"></div>
-        </div>
-        <div class="city" id="new-york" style="display: none">
-          <h2>New York 🇺🇸</h2>
-          <div class="date"></div>
-          <div class="time"></div>
-        </div>
-        <div class="city" id="auckland" style="display: none">
-          <h2>Auckland 🇳🇿</h2>
-          <div class="date"></div>
-          <div class="time"></div>
-        </div>
-        <div class="city" id="tokyo" style="display: none">
-          <h2>Tokyo 🇯🇵</h2>
-          <div class="date"></div>
-          <div class="time"></div>
-        </div>
-        <div class="city" id="berlin" style="display: none">
-          <h2>Berlin 🇩🇪</h2>
-          <div class="date"></div>
-          <div class="time"></div>
-        </div>
-        <div class="city" id="chicago" style="display: none">
-          <h2>Chicago 🇺🇸</h2>
-          <div class="date"></div>
-          <div class="time"></div>
-        </div>
-        <div class="city" id="singapore" style="display: none">
-          <h2>Singapore 🇸🇬</h2>
-          <div class="date"></div>
+        <div class="city" id="new-york">
+          <div>
+            <h2>New York</h2>
+            <div class="date"></div>
+          </div>
           <div class="time"></div>
         </div>
       </div>
-
-      <button id="show-current-time">Show Local Time</button>
-      <button id="back-button" style="display: none">Back</button>
     </div>
-
     <footer>
       <p>
         This project was coded by
