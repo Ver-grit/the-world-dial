@@ -2,16 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>The World Dial</title>
     <style>
       body {
         text-align: center;
       }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .city {
+        margin-top: 20px;
+      }
     </style>
   </head>
   <body>
-    <h1>The World Dial</h1>
+    <div class="container">
+      <h1>The World Dial</h1>
+
+      <select>
+        <option value="">Select a city..</option>
+        <option value="los-angeles">Los Angeles 🇺🇸</option>
+        <option value="sydney">Sydney 🇦🇺</option>
+        <option value="london">London 🇬🇧</option>
+        <option value="new-york">New York 🇺🇸</option>
+        <option value="auckland">Auckland 🇳🇿</option>
+      </select>
+
+      <div class="city" id="los-angeles">
+        <h2>Los Angeles 🇺🇸</h2>
+        <div class="date">August 15th 2022</div>
+        <div class="time">1:48:15 AM</div>
+      </div>
+
+      <div class="city" id="sydney">
+        <h2>Sydney 🇦🇺</h2>
+        <div class="date">August 15th 2022</div>
+        <div class="time">1:48:15 AM</div>
+      </div>
+    </div>
 
     <footer>
       <p>
@@ -27,5 +59,7 @@
         <a href="https://theworlddial.netlify.app" target="_blank">Netlify</a>.
       </p>
     </footer>
+
+    <script src="javascript/index.js"></script>
   </body>
 </html>
