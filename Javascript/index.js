@@ -1,140 +1,84 @@
-function updateTimeDial() {
-    let losAngelesElement = document.querySelector("#los-angeles");
-    if (losAngelesElement) {
-      let losAngelesDateElement = losAngelesElement.querySelector(".date");
-      let losAngelesTimeElement = losAngelesElement.querySelector(".time");
-      let losAngelesTime = moment().tz("America/Los_Angeles");
+function updateCityTime(cityId, cityTimeZone) {
+    const cityElement = document.getElementById(cityId);
+    const cityDateElement = cityElement.querySelector(".date");
+    const cityTimeElement = cityElement.querySelector(".time");
+    const cityTime = moment().tz(cityTimeZone);
   
-      losAngelesDateElement.innerHTML = losAngelesTime.format("MMMM Do YYYY");
-      losAngelesTimeElement.innerHTML = losAngelesTime.format(
-        "h:mm:ss [<small>]A[</small>]"
-      );
-    }
+    cityDateElement.innerHTML = cityTime.format("MMMM Do YYYY");
+    cityTimeElement.innerHTML = cityTime.format("h:mm:ss [<small>]A[</small>]");
+  }
   
-    let sydneyElement = document.querySelector("#sydney");
-    if (sydneyElement) {
-      let sydneyDateElement = sydneyElement.querySelector(".date");
-      let sydneyTimeElement = sydneyElement.querySelector(".time");
-      let sydneyTime = moment().tz("Australia/Sydney");
+  function updateTimeDial() {
+    updateCityTime("los-angeles", "America/Los_Angeles");
+    updateCityTime("sydney", "Australia/Sydney");
+    updateCityTime("london", "Europe/London");
+    updateCityTime("new-york", "America/New_York");
+    updateCityTime("auckland", "Pacific/Auckland");
+    updateCityTime("tokyo", "Asia/Tokyo");
+    updateCityTime("berlin", "Europe/Berlin");
+    updateCityTime("chicago", "America/Chicago");
+    updateCityTime("singapore", "Asia/Singapore");
+  }
   
-      sydneyDateElement.innerHTML = sydneyTime.format("MMMM Do YYYY");
-      sydneyTimeElement.innerHTML = sydneyTime.format(
-        "h:mm:ss [<small>]A[</small>]"
-      );
-    }
+  function updateLocalTime() {
+    const localTimeElement = document.querySelector("#local-time");
+    localTimeElement.style.display = "block";
   
-    // London
-    let londonElement = document.querySelector("#london");
-    if (londonElement) {
-      let londonDateElement = londonElement.querySelector(".date");
-      let londonTimeElement = londonElement.querySelector(".time");
-      let londonTime = moment().tz("Europe/London");
+    const localTime = moment();
+    localTimeElement.innerHTML = `
+          <h2>Your Local Time</h2>
+          <div class="date">${localTime.format("MMMM Do YYYY")}</div>
+          <div class="time">${localTime.format(
+            "h:mm:ss"
+          )} <small>${localTime.format("A")}</small></div>
+      `;
+  }
   
-      londonDateElement.innerHTML = londonTime.format("MMMM Do YYYY");
-      londonTimeElement.innerHTML = londonTime.format(
-        "h:mm:ss [<small>]A[</small>]"
-      );
-    }
+  function showCurrentTime() {
+    updateLocalTime();
+    document.getElementById("cities-dial").style.display = "none";
+    document.getElementById("back-button").style.display = "inline";
+  }
   
-    // New York
-    let newYorkElement = document.querySelector("#new-york");
-    if (newYorkElement) {
-      let newYorkDateElement = newYorkElement.querySelector(".date");
-      let newYorkTimeElement = newYorkElement.querySelector(".time");
-      let newYorkTime = moment().tz("America/New_York");
+  function goBack() {
+    document.getElementById("local-time").style.display = "none";
+    document.getElementById("cities-dial").style.display = "block";
+    document.getElementById("back-button").style.display = "none";
+  }
   
-      newYorkDateElement.innerHTML = newYorkTime.format("MMMM Do YYYY");
-      newYorkTimeElement.innerHTML = newYorkTime.format(
-        "h:mm:ss [<small>]A[</small>]"
-      );
-    }
+  function displayCityTime(cityTimeZone) {
   
-    let aucklandElement = document.querySelector("#auckland");
-    if (aucklandElement) {
-      let aucklandDateElement = aucklandElement.querySelector(".date");
-      let aucklandTimeElement = aucklandElement.querySelector(".time");
-      let aucklandTime = moment().tz("Pacific/Auckland");
+    document.querySelectorAll(".city").forEach((city) => {
+      city.style.display = "none";
+    });
   
-      aucklandDateElement.innerHTML = aucklandTime.format("MMMM Do YYYY");
-      aucklandTimeElement.innerHTML = aucklandTime.format(
-        "h:mm:ss [<small>]A[</small>]"
-      );
-    }
   
-    let tokyoElement = document.querySelector("#tokyo");
-    if (tokyoElement) {
-      let tokyoDateElement = tokyoElement.querySelector(".date");
-      let tokyoTimeElement = tokyoElement.querySelector(".time");
-      let tokyoTime = moment().tz("Asia/Tokyo");
+    const cityId = cityTimeZone.split("/")[1].toLowerCase();
+    const cityElement = document.getElementById(cityId);
+    if (cityElement) {
+      cityElement.style.display = "block";
   
-      tokyoDateElement.innerHTML = tokyoTime.format("MMMM Do YYYY");
-      tokyoTimeElement.innerHTML = tokyoTime.format(
-        "h:mm:ss [<small>]A[</small>]"
-      );
-    }
+      updateCityTime(cityId, cityTimeZone);
   
-    let berlinElement = document.querySelector("#berlin");
-    if (berlinElement) {
-      let berlinDateElement = berlinElement.querySelector(".date");
-      let berlinTimeElement = berlinElement.querySelector(".time");
-      let berlinTime = moment().tz("Europe/Berlin");
   
-      berlinDateElement.innerHTML = berlinTime.format("MMMM Do YYYY");
-      berlinTimeElement.innerHTML = berlinTime.format(
-        "h:mm:ss [<small>]A[</small>]"
-      );
-    }
-  
-    let chicagoElement = document.querySelector("#chicago");
-    if (chicagoElement) {
-      let chicagoDateElement = chicagoElement.querySelector(".date");
-      let chicagoTimeElement = chicagoElement.querySelector(".time");
-      let chicagoTime = moment().tz("America/Chicago");
-  
-      chicagoDateElement.innerHTML = chicagoTime.format("MMMM Do YYYY");
-      chicagoTimeElement.innerHTML = chicagoTime.format(
-        "h:mm:ss [<small>]A[</small>]"
-      );
-    }
-  
-    // Singapore
-    let singaporeElement = document.querySelector("#singapore");
-    if (singaporeElement) {
-      let singaporeDateElement = singaporeElement.querySelector(".date");
-      let singaporeTimeElement = singaporeElement.querySelector(".time");
-      let singaporeTime = moment().tz("Asia/Singapore");
-  
-      singaporeDateElement.innerHTML = singaporeTime.format("MMMM Do YYYY");
-      singaporeTimeElement.innerHTML = singaporeTime.format(
-        "h:mm:ss [<small>]A[</small>]"
-      );
+      document.getElementById("back-button").style.display = "inline";
     }
   }
   
-  function updateCityDial(event) {
-    let cityTimeZone = event.target.value;
-    if (!cityTimeZone) return;
+  document
+    .getElementById("show-current-time")
+    .addEventListener("click", showCurrentTime);
+  document.getElementById("back-button").addEventListener("click", goBack);
   
-    let cityName = cityTimeZone.split("/").pop().replace("_", " ");
-    let cityTime = moment().tz(cityTimeZone);
-    let citiesElement = document.querySelector("#cities-dial");
   
-    citiesElement.innerHTML = "";
+  document.getElementById("city-dial").addEventListener("change", function (e) {
+    const selectedCity = e.target.value;
+    if (selectedCity) {
+      displayCityTime(selectedCity);
+    }
+  });
   
-    citiesElement.innerHTML += `
-          <div class="city">
-            <h2>${cityName}</h2>
-            <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
-            <div class="time">${cityTime.format(
-              "h:mm:ss"
-            )} <small>${cityTime.format("A")}</small></div>
-          </div>
-        `;
-  }
   
   updateTimeDial();
   setInterval(updateTimeDial, 1000);
-  
-  let citiesSelectElementDial = document.querySelector("#city-dial");
-  citiesSelectElementDial.addEventListener("change", updateCityDial);
   
